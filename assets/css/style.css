@@ -2,6 +2,14 @@ body {
     background-color: #e6e6e6;
 }
 
-h1 {
+h2 {
     text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+.instructions {
+    font-size: 10px;
 }

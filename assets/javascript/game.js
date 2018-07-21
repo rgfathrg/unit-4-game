@@ -28,22 +28,24 @@ function reset() {
  //Will need a function to receive click, to generate random number, update score and compare to set goal
 $(".start").on("click", function() {
     function rTargetNum() { 
-       var rTargetNum = [Math.floor(Math.random() * (121 - 19) + 19)];
+       var rTargetNum = Math.floor(Math.random() * (121 - 19) + 19);
        return rTargetNum;
     }
     targetNum = parseInt(rTargetNum());
     $(".rNumTar").text(targetNum);
     reset();
     $(".num").text(colNum);
+    $(".start").text("Play Again");
 });
 
 $(".refresh").on("click", function() {
     if (colNum < targetNum) {
         losses++;
         $("#losses").text(losses);
+        
     }
     function rTargetNum() { 
-        var rTargetNum = [Math.floor(Math.random() * (121 - 19) + 19)];
+        var rTargetNum = Math.floor(Math.random() * (121 - 19) + 19);
         return rTargetNum;
      }
     targetNum = parseInt(rTargetNum());
@@ -55,25 +57,25 @@ $(".refresh").on("click", function() {
 
 
 function gem1Num() {
-var gem1Num = [Math.floor(Math.random() * (13 - 1) + 1)];
+var gem1Num = Math.floor(Math.random() * (13 - 1) + 1);
 return gem1Num;
 }
 gem1 = parseInt(gem1Num());
 
 function gem2Num() {
-var gem2Num = [Math.floor(Math.random() * (13 - 1) + 1)];
+var gem2Num = Math.floor(Math.random() * (13 - 1) + 1);
 return gem2Num;
 }
 var gem2 = parseInt(gem2Num());
 
 function gem3Num() {
-var gem3Num = [Math.floor(Math.random() * (13 - 1) + 1)];
+var gem3Num = Math.floor(Math.random() * (13 - 1) + 1);
 return gem3Num;
 }
 var gem3 = parseInt(gem3Num());
 
 function gem4Num() {
-var gem4Num = [Math.floor(Math.random() * (13 - 1) + 1)];
+var gem4Num = Math.floor(Math.random() * (13 - 1) + 1);
 return gem4Num;
 }
 var gem4 = parseInt(gem4Num());
