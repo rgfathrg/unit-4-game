@@ -31,7 +31,21 @@ $(".start").on("click", function() {
        var rTargetNum = [Math.floor(Math.random() * (121 - 19) + 19)];
        return rTargetNum;
     }
-    $(".start").text("Refresh");
+    targetNum = parseInt(rTargetNum());
+    $(".rNumTar").text(targetNum);
+    reset();
+    $(".num").text(colNum);
+});
+
+$(".refresh").on("click", function() {
+    if (colNum < targetNum) {
+        losses++;
+        $("#losses").text(losses);
+    }
+    function rTargetNum() { 
+        var rTargetNum = [Math.floor(Math.random() * (121 - 19) + 19)];
+        return rTargetNum;
+     }
     targetNum = parseInt(rTargetNum());
     $(".rNumTar").text(targetNum);
     reset();
@@ -87,23 +101,19 @@ $(".gem").on("click", function() {
 
     if (colNum > targetNum) {
       losses++;
+      $("#losses").text(losses);
       alert("You have collected too much, refresh and try again.");
       reset();   
     }
     if (colNum === targetNum) {
       wins++;
+      $("#wins").text(wins);
       alert("You have collected just enough, enjoy your spoils or try again. Hit the refresh button!");
       reset();
     }
-
+});
  
 
-var html = 
-"<p>Wins: " + wins + "</p>" +
-"<p>Losses: " + losses + "</P>";
-
-document.querySelector("#score").innerHTML = html;
-});  
 
 
 //Reset
