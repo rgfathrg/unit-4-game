@@ -8,6 +8,7 @@ var wins = 0;
 var colNum = 0;
 var gem1;
 var refreshOp = false;
+var start = false;
 //Functions
 
 
@@ -27,6 +28,8 @@ function reset() {
 
  //Will need a function to receive click, to generate random number, update score and compare to set goal
 $(".start").on("click", function() {
+    start = true;
+    console.log(start);
     function rTargetNum() { 
        var rTargetNum = Math.floor(Math.random() * (121 - 19) + 19);
        return rTargetNum;
@@ -45,7 +48,7 @@ $(".refresh").on("click", function() {
         
     }
     function rTargetNum() { 
-        var rTargetNum = Math.floor(Math.random() * (121 - 19) + 19);
+        var rTargetNum = Math.floor(Math.random() * 121 + 19);
         return rTargetNum;
      }
     targetNum = parseInt(rTargetNum());
@@ -57,25 +60,25 @@ $(".refresh").on("click", function() {
 
 
 function gem1Num() {
-var gem1Num = Math.floor(Math.random() * (13 - 1) + 1);
+var gem1Num = Math.floor(Math.random() * 12 + 1);
 return gem1Num;
 }
 gem1 = parseInt(gem1Num());
 
 function gem2Num() {
-var gem2Num = Math.floor(Math.random() * (13 - 1) + 1);
+var gem2Num = Math.floor(Math.random() * 12 + 1);
 return gem2Num;
 }
 var gem2 = parseInt(gem2Num());
 
 function gem3Num() {
-var gem3Num = Math.floor(Math.random() * (13 - 1) + 1);
+var gem3Num = Math.floor(Math.random() * 12 + 1);
 return gem3Num;
 }
 var gem3 = parseInt(gem3Num());
 
 function gem4Num() {
-var gem4Num = Math.floor(Math.random() * (13 - 1) + 1);
+var gem4Num = Math.floor(Math.random() * 12 + 1);
 return gem4Num;
 }
 var gem4 = parseInt(gem4Num());
@@ -84,34 +87,44 @@ var gem4 = parseInt(gem4Num());
 
 
 $(".gem").on("click", function() {
-    if ($(this).val() === "gem1") {
+console.log(start);
+   if (start === true) {
+     if ($(this).val() === "gem1") {
         colNum = gem1 + colNum;
         $(".num").text(colNum);
-    }
-    else if ($(this).val() === "gem2") {
+     }
+     else if ($(this).val() === "gem2") {
         colNum = gem2 + colNum;
         $(".num").text(colNum);
-    }
-    else if ($(this).val() === "gem3") {
+     }
+     else if ($(this).val() === "gem3") {
         colNum = gem3 + colNum;
         $(".num").text(colNum);
-    }
-    else if ($(this).val() === "gem4") {
+     }
+     else if ($(this).val() === "gem4") {
         colNum = gem4 + colNum;
         $(".num").text(colNum);
-    }
+     }
+    
+    
 
-    if (colNum > targetNum) {
-      losses++;
-      $("#losses").text(losses);
-      alert("You have collected too much, refresh and try again.");
-      reset();   
-    }
-    if (colNum === targetNum) {
-      wins++;
-      $("#wins").text(wins);
-      alert("You have collected just enough, enjoy your spoils or try again. Hit the refresh button!");
-      reset();
+      if (colNum > targetNum) {
+        losses++;
+        $("#losses").text(losses);
+        alert("You have collected too much, hit the play again button to try again.");
+        reset();
+        start = false;   
+      }
+      if (colNum === targetNum) {
+        wins++;
+        $("#wins").text(wins);
+        alert("You have collected just enough, enjoy your spoils or try again. Hit the play again button!");
+        reset();
+        start = false;
+      }
+    }  
+    else {
+        alert("please hit the start button to begin the game!");
     }
 });
  
