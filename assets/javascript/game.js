@@ -42,19 +42,24 @@ $(".start").on("click", function() {
 });
 
 $(".refresh").on("click", function() {
-    if (colNum < targetNum) {
+    if (start === true) {
+        if (colNum < targetNum) {
         losses++;
         $("#losses").text(losses);
         
+        }
+        function rTargetNum() { 
+          var rTargetNum = Math.floor(Math.random() * 121 + 19);
+          return rTargetNum;
+        }
+        targetNum = parseInt(rTargetNum());
+        $(".rNumTar").text(targetNum);
+        reset();
+        $(".num").text(colNum);
     }
-    function rTargetNum() { 
-        var rTargetNum = Math.floor(Math.random() * 121 + 19);
-        return rTargetNum;
-     }
-    targetNum = parseInt(rTargetNum());
-    $(".rNumTar").text(targetNum);
-    reset();
-    $(".num").text(colNum);
+    else {
+        alert("Please hit the start button to begin!");
+    }
 });
 //Random number to be assigned to each gem
 
