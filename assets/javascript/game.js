@@ -38,7 +38,7 @@ $(".start").on("click", function() {
     $(".rNumTar").text(targetNum);
     reset();
     $(".num").text(colNum);
-    $(".start").text("Play Again");
+    
 });
 
 $(".refresh").on("click", function() {
@@ -116,14 +116,14 @@ console.log(start);
       if (colNum > targetNum) {
         losses++;
         $("#losses").text(losses);
-        alert("You have collected too much, hit the play again button to try again.");
+        alert("You have collected too much, hit the start button to try again.");
         reset();
         start = false;   
       }
       if (colNum === targetNum) {
         wins++;
         $("#wins").text(wins);
-        alert("You have collected just enough, enjoy your spoils or try again. Hit the play again button!");
+        alert("You have collected just enough, enjoy your spoils or try again. Hit the start button!");
         reset();
         start = false;
       }
